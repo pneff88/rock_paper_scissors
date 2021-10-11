@@ -1,0 +1,11 @@
+* {
+    background-color: gold;
+    color: red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#emb {
+    width: 200px;
+}
