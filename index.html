@@ -9,16 +9,26 @@
     
 </head>
 <body>
-    <script src="./script.js"></script>
+    <script src="./script.js" defer></script>
     <h1>Rock - Paper - Scissors </h1>
-    <h2> The Online Extreme Version </h2>
+    <h2> The Online Extreme Version 2.0</h2>
     <h3> By Patrick Neff, Progrummer </h3>
-    <h4> Open up the console and type "game()" to play.</h4>
-    <p>To open the console on a Chromebook, while in the browser, type:</p>
-    <p>Shift + CTRL + J</p>
-    <p>Then go to "console"</p>
+
     <p><em>Dedicated to the Heart of Eve Marie Blasinsky</em></p>
     <img id=emb src="images/emb.jpg" alt="A picture of my beloved">
+
+    <div id='direction'><em>Make your move!</em></div>
+
+    <div class=buttonContainer>
+        <button id="rockB">ROCK</button>
+        <button id="paperB">PAPER</button>
+        <button id="scissorsB">SCISSORS</button>
+    </div>
+
+    <div class=displayConsole>
+        <div id="yourScore">YOUR Score: 0</div>
+        <div id="compScore">COMPUTER Score: 0</div>
+    </div>
     
 </body>
 </html>

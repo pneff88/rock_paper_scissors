@@ -8,4 +8,34 @@
 
 #emb {
     width: 200px;
+    border: 6px solid black;
+}
+
+#direction {
+    font-size: 40px;
+    margin: 20px;
+}
+
+.buttonContainer {
+    width: 500px;
+    height: 75px;
+    border: 6px solid black;
+    background-color: gray;
+    display:flex;
+    flex-direction: row;
+    margin: 20px;
+    justify-content: space-evenly;
+}
+
+button {
+    background-color: blue;
+    color: orange;
+}
+
+.displayConsole {
+    height: 150px;
+    background-color: gold;
+    height: 75px;
+    width: 350px;
+    border: 6px solid black;
 }

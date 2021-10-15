@@ -4,61 +4,108 @@ function computerPlay() {
 }
 
 let winner = undefined;
+let playerWins = 0;
+let computerWins = 0;
+
+function game() {
+
+    let game_over = false;
+    if (winner == "you") {
+        playerWins += 1;
+        yourScore.innerHTML = `YOUR Score: ${playerWins}`;
+    } else if (winner == "computer") {
+        computerWins += 1;
+        compScore.innerHTML = `COMPUTER Score: ${computerWins}`;
+    }
+
+    if (playerWins > 4) {
+        game_over = true;
+        display2.textContent = 'THE GAME IS OVER. YOU ARE THE VICTOR.';
+    } else if (computerWins > 4) {
+        game_over = true; 
+        display2.textContent = 'THE GAME IS OVER. THE COMPUTER WINS.';
+    }
+}
+
+
+
 
 function playRound(playerSelection, computerSelection) {
     
     if (playerSelection.toLowerCase() == "rock" && computerSelection == "rock") {
-        return "Kiss you're sister; you tied.";
+        winner = undefined;
+        display.textContent = "Kiss you're sister; you tied.";
     } else if (playerSelection.toLowerCase() == "rock" && computerSelection == "scissors") {
         winner = "you";
-        return "Huzzah! You've won. Rock crushes Scissors.";
+        display.textContent = "Huzzah! You've won. Rock crushes Scissors.";
     } else if (playerSelection.toLowerCase() == "rock" && computerSelection == "paper") {
         winner = "computer";
-        return "Dangit! You lost because Paper covers Rock.";
+        display.textContent = "Dangit! You lost because Paper covers Rock.";
+    
     } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "paper") {
-        return "Kiss you're sister; you tied.";
+        winner = undefined;
+        display.textContent = "Kiss you're sister; you tied.";
     } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "rock") {
         winner = "you";
-        return "Huzzah! You've won. paper covers Rock.";
-        
+        display.textContent = "Huzzah! You've won. Paper covers Rock.";
     } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "scissors") {
         winner = "computer";
-        return "Dangit! You lost because Scissors slice Paper.";
+        display.textContent = "Dangit! You lost because Scissors slice Paper.";
         
     } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "scissors") {
-        return "Kiss you're sister; you tied.";
+        winner = undefined;
+        display.textContent = "Kiss you're sister; you tied.";
     } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "paper") {
         winner = "you";
-        return "Huzzah! You've won. Scissors slices Paper.";
-        
+        display.textContent = "Huzzah! You've won. Scissors slices Paper.";  
     } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "rock") {
         winner = "computer";
-        return "Dangit! You lost because Rock crushes Scissors.";
+        display.textContent = "Dangit! You lost because Rock crushes Scissors.";
         
     }
+
 }
 
-function game() {
-    let youWins = 0;
-    let computerWins = 0;
+let playerChoice = undefined;
 
-    console.log("There will be five rounds. I wish you luck, madam or sir!")
-
-    for (let i=0; i<5; i++) {
-    let playerChoice = prompt("Rock, paper, or scissors, kid?");
+const rockB = document.querySelector('#rockB');
+rockB.addEventListener('click', () => {
+    playerChoice = "rock";
     console.log(playRound(playerChoice, computerPlay()));
-        if (winner == "you") {
-            youWins += 1;
-        } else if (winner == "computer") {
-            computerWins += 1;
-        }
-    console.log(`Score is YOU: ${youWins}; COMPUTER: ${computerWins}`)
-    }
-    if (youWins == computerWins) {
-        console.log("This sucks but the whole game was a tie. Sorry, breh.")
-    } else if (youWins >computerWins) { 
-        console.log("Sound the trumpet, you have won, blessed one! YOU WIN!")
-    } else {
-        console.log("Alas, the Preen shall reign for a thousand years. YOU LOSE!")
-    }
-}
+    game();
+})
+
+const paperB = document.querySelector('#paperB');
+paperB.addEventListener('click', () => {
+    playerChoice = "paper";
+    console.log(playRound(playerChoice, computerPlay()));
+    game();
+})
+
+const scissorsB = document.querySelector('#scissorsB');
+scissorsB.addEventListener('click', () => {
+    playerChoice = "scissors";
+    console.log(playRound(playerChoice, computerPlay()));
+    game();
+})
+
+const displayConsole = document.querySelector('.displayConsole');
+
+const display = document.createElement('div');
+display.classList.add('display');
+display.textContent = null;
+
+const yourScore = document.querySelector('#yourScore');
+
+const compScore = document.querySelector('#compScore');
+
+displayConsole.appendChild(display);
+
+const display2 = document.createElement('div');
+display2.classList.add('display2');
+display.textContent = null;
+
+displayConsole.appendChild(display2);
+
+
+game();
